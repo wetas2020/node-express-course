@@ -3,15 +3,17 @@ const express = require('express');
 // assign the express module to the app variable
 const app = express();
 
-// create dammy data
+// create dummy-data
 const mockUserData = [{ name: 'Saad' }, { name: 'Haitam' }];
 
 // get the user data
-app.get('/users', function (req, res) {
+app.get('/users/:id', function (req, res) {
+    // get the id from the url
+    console.log(req.params.id);
     res.json({
         success: true,
-        message: 'Users retrieved successfully',
-        users: mockUserData
+        message: 'User data retrieved successfully',
+        users: req.params.id
     });
 });
 
